@@ -1,0 +1,115 @@
+@page "/"
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using System.Text.Json
+@using FrontendArista.Models
+
+
+<h3>Formulario</h3>
+
+<EditForm Model="@formData" OnValidSubmit="HandleValidSubmit" class="mt-3 mb-3">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-2">
+        <label for="nombre" class="form-label">Nombre*</label>
+        <InputText class="form-control" id="nombre" @bind-Value="formData.Nombre" required maxlength="100" />
+        <ValidationMessage For="@(() => formData.Nombre)" />
+    </div>
+    <div class="mb-2">
+        <label for="apellido" class="form-label">Apellido*</label>
+        <InputText class="form-control" id="apellido" @bind-Value="formData.Apellido" required maxlength="100" />
+        <ValidationMessage For="@(() => formData.Apellido)" />
+    </div>
+    <div class="mb-2">
+        <label for="correo" class="form-label">Correo Electrónico*</label>
+        <InputText class="form-control" id="correo" @bind-Value="formData.Correo" required maxlength="100" />
+        <ValidationMessage For="@(() => formData.Correo)" />
+    </div>
+    <div class="mb-2">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <InputText class="form-control" id="telefono" @bind-Value="formData.Telefono" />
+        <ValidationMessage For="@(() => formData.Telefono)" />
+    </div>
+    <div class="mb-2">
+        <label for="direccion" class="form-label">Dirección</label>
+        <InputText class="form-control" id="direccion" @bind-Value="formData.Direccion" maxlength="255"/>
+        <ValidationMessage For="@(() => formData.Direccion)" />
+    </div>
+    <div class="mb-2">
+        <label for="codigoPostal" class="form-label">Código Postal*</label>
+        <InputText class="form-control" id="codigoPostal" @bind-Value="formData.CodigoPostal" required maxlength="6"/>
+    </div>
+    <div class="mb-2">
+        <label for="pais" class="form-label">Comunicarse con:</label>
+        <InputSelect class="form-select" id="pais" @bind-Value="formData.Pais" required TValue="string">
+            <option value="">--</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Colombia">Colombia</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => formData.Pais)" />
+    </div>
+    <div class="mb-2">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <InputTextArea class="form-control" id="mensaje" @bind-Value="formData.Mensaje" rows="2" required maxlength="500" />
+        <ValidationMessage For="@(() => formData.Mensaje)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</EditForm>
+
+@if (formSubmitted)
+{
+    <div class="mt-3 mb-3 bg-light p-3 border">
+        <strong>Formulario enviado exitosamente!</strong>
+        <pre class="preformatted-json">@JsonResult</pre>
+    </div>
+}
+
+@code {
+    private FormModel formData = new FormModel();
+    private bool formSubmitted = false;
+    private string JsonResult;
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            var url = "http://localhost:5000/api/cliente/mi-info";
+            var jsonData = new
+            {
+               Nombre = formData.Nombre,
+               Apellido = formData.Apellido,
+               Correo = formData.Correo,
+               Telefono = formData.Telefono,
+               Direccion = formData.Direccion,
+               CodigoPostal = formData.CodigoPostal,
+               Pais = formData.Pais,
+               Mensaje = formData.Mensaje
+            };
+
+            var response = await Http.PostAsJsonAsync(url, jsonData);
+
+            if (response.IsSuccessStatusCode)
+            {
+                JsonResult = await response.Content.ReadAsStringAsync();
+                formSubmitted = true;
+                await JS.InvokeVoidAsync("alert", $"¡Éxito! Respuesta: {JsonResult}");
+            }
+            else
+            {
+                JsonResult = "Error en la solicitud, no se encontraron resultados con el código postal " + formData.CodigoPostal;
+                formSubmitted = false;
+                await JS.InvokeVoidAsync("alert", JsonResult);
+            }
+        }
+        catch (Exception ex)
+        {
+            JsonResult = "Ocurrió un error: " + ex.Message;
+            await JS.InvokeVoidAsync("alert", JsonResult);
+        }
+    }
+}

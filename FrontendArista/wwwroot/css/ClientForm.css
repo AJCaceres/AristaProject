@@ -1,0 +1,9 @@
+.preformatted-json {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    word-break: break-word;
+}

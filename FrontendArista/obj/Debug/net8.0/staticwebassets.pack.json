@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\obj\\Debug\\net8.0\\compressed\\2t4e18jup3.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontendArista.styles.css",
+      "PackagePath": "staticwebassets\\FrontendArista.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\css\\ClientForm.css",
+      "PackagePath": "staticwebassets\\css\\ClientForm.css"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\ajcac\\Documents\\AristaCaso\\FrontendArista\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontendArista.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FrontendArista.props",
+      "PackagePath": "build\\FrontendArista.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FrontendArista.props",
+      "PackagePath": "buildMultiTargeting\\FrontendArista.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FrontendArista.props",
+      "PackagePath": "buildTransitive\\FrontendArista.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
